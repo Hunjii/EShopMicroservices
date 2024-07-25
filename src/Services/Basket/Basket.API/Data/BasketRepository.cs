@@ -19,7 +19,7 @@ namespace Basket.API.Data
 
         public async Task<bool> DeleteBasket(string userName, CancellationToken cancellationToken)
         {
-            session.Delete(userName);
+            session.Delete<ShoppingCart>(userName);
             await session.SaveChangesAsync(cancellationToken);
             return true;
         }
