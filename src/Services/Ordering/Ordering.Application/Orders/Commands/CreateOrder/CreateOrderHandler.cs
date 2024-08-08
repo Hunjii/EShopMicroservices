@@ -23,7 +23,7 @@
                 orderName: OrderName.Of(order.OrderName),
                 shippingAddress: shippingAddress,
                 billingAddress: billingAddress,
-                payment: Payment.Of(order.Payment.CardName, order.Payment.CardNubmer, order.Payment.Expiration, order.Payment.Cvv, order.Payment.PaymentMethod)
+                payment: Payment.Of(order.Payment.CardName, order.Payment.CardNumber, order.Payment.Expiration, order.Payment.Cvv, order.Payment.PaymentMethod)
             );
 
             foreach ( var orderItem in order.OrderItems )
