@@ -3,7 +3,7 @@ using BuildingBlocks.Pagination;
 
 namespace Ordering.Application.Orders.Queries.GetOrdersPagination
 {
-    public class GetOrdersPaginationHandler(IApplicationDbContext dbContext) : IQueryHandler<GetOrdersPaginationQuery, GetOrdersPaginationResult>
+    public class GetOrdersPaginationQueryHandler(IApplicationDbContext dbContext) : IQueryHandler<GetOrdersPaginationQuery, GetOrdersPaginationResult>
     {
         public async Task<GetOrdersPaginationResult> Handle(GetOrdersPaginationQuery query, CancellationToken cancellationToken)
         {

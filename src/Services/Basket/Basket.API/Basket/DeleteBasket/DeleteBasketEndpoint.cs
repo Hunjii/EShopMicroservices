@@ -17,12 +17,12 @@ namespace Basket.API.Basket.DeleteBasket
 
                 return Results.Ok(response);
             })
-            .WithName("DeleteProducts")
+            .WithName("DeleteBasket")
             .Produces<DeleteBasketResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Delete Products")
-            .WithDescription("Delete Products");
+            .WithSummary("Delete Basket")
+            .WithDescription("Delete Basket");
         }
     }
 }
