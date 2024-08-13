@@ -2,6 +2,7 @@
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
+using Ordering.API.OptionsSetup;
 
 namespace Ordering.API
 {
@@ -15,6 +16,9 @@ namespace Ordering.API
 
             services.AddHealthChecks()
                 .AddSqlServer(configuration.GetConnectionString("Database")!);
+
+            services.ConfigureOptions<JwtOptionsSetup>();
+            services.ConfigureOptions<JwtBearerOptionsSetup>();
 
             return services;
         }
@@ -30,6 +34,12 @@ namespace Ordering.API
                 {
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
+            app.MapControllers();
 
             return app;
         }

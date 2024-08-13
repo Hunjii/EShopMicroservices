@@ -1,7 +1,9 @@
 ﻿using BuildingBlocks.Messaging.MassTransit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;
+using Ordering.Application.Abstractions;
 using System.Reflection;
 
 namespace Ordering.Application
@@ -19,6 +21,13 @@ namespace Ordering.Application
 
             services.AddFeatureManagement();
             services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
+
+
+            services.AddControllers();
+            services.AddAuthorization();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer();
+
             return services;
         }
     }
