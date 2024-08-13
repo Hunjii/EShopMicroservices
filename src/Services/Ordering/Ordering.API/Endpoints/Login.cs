@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ordering.Application.Authentication.Command.Login;
 using Ordering.Application.Orders.Queries.GetOrdersByCustomer;
+using Ordering.Infrastructure.Authentication;
 
 namespace Ordering.API.Endpoints
 {
@@ -27,7 +28,7 @@ namespace Ordering.API.Endpoints
             return Ok(response);
         }
 
-        [Authorize]
+        [HasPermission(Permission.AllowAccessEndpoint)]
         [HttpGet("test/{id}")]
         public async Task<IActionResult> Test(Guid id)
         {

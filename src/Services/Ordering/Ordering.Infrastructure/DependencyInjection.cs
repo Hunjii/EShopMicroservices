@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Application.Abstractions;
 using Ordering.Application.Data;
 using Ordering.Infrastructure.Authentication;
-using Ordering.Infrastructure.Data.Interceptors;
 
 namespace Ordering.Infrastructure
 {
@@ -25,7 +25,10 @@ namespace Ordering.Infrastructure
             });
 
             services.AddScoped<IJwtProvider, JwtProvider>();
+            services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+            services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
 
             return services;
         }

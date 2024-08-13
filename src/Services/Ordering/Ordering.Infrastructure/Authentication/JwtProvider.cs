@@ -19,8 +19,8 @@ namespace Ordering.Infrastructure.Authentication
         public string GetJwtToken(Customer customer)
         {
             var claims = new Claim[] { 
-                new Claim(JwtRegisteredClaimNames.Sub, customer.Id.Value.ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, customer.Email),
+                new(JwtRegisteredClaimNames.Sub, customer.Id.Value.ToString()),
+                new(JwtRegisteredClaimNames.Email, customer.Email),
             };
 
             var signingCredentials = new SigningCredentials(

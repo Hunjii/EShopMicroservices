@@ -26,8 +26,8 @@ namespace Ordering.Application.Extensions
                     order.BillingAddress.State,
                     order.BillingAddress.ZipCode),
                 Payment: new PaymentDto(
-                    order.Payment.CardName!,
-                    order.Payment.CardNumber!,
+                    order.Payment.CardName,
+                    order.Payment.CardNumber,
                     order.Payment.Expiration,
                     order.Payment.CVV,
                     order.Payment.PaymentMethod),
