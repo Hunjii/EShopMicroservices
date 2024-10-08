@@ -16,6 +16,9 @@ services:
   messagebroker:
     image: rabbitmq:management
 
+  minio:
+    image: docker.io/bitnami/minio:2022
+
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
@@ -49,7 +52,5 @@ services:
 volumes:
   postgres_catalog:
   postgres_basket:
-
-
-
-
+  minio_data:
+    driver: local

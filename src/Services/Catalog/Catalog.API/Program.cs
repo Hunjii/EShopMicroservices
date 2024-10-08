@@ -1,3 +1,6 @@
+using BuildingBlocks.Storage.Interface;
+using BuildingBlocks.Storage.Minio;
+using BuildingBlocks.Storage.Services;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
@@ -17,6 +20,8 @@ builder.Services.AddMarten(opts =>
 {
     opts.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
+
+builder.Services.AddMinio(builder.Configuration);
 
 if (builder.Environment.IsDevelopment())
 {
